@@ -122,6 +122,7 @@ public class PdfSignatureAppearance {
   private PdfTemplate frm;
   private final PdfStamperImp writer;
   private String layer2Text;
+  private String isNotCommonName;
   private String reason;
   private String location;
   private Calendar signDate;
@@ -488,6 +489,8 @@ public class PdfSignatureAppearance {
             .append('\n');
         SimpleDateFormat sd = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss z");
         buf.append("Date: ").append(sd.format(signDate.getTime()));
+        if (isNotCommonName != null)
+          buf.append('\n').append("Name: ").append(isNotCommonName);
         if (reason != null)
           buf.append('\n').append("Reason: ").append(reason);
         if (location != null)
@@ -746,6 +749,25 @@ public class PdfSignatureAppearance {
     externalDigest = digest;
     externalRSAdata = RSAdata;
     this.digestEncryptionAlgorithm = digestEncryptionAlgorithm;
+  }
+
+  /**
+   * Gets the signing name.
+   * 
+   * @return the signing name
+   */
+  public String getisNotCommonName() {
+    return this.isNotCommonName;
+  }
+
+  /**
+   * Sets the signing name.
+   * 
+   * @param name
+   *               the signing name
+   */
+  public void setisNotCommonName(String isNotCommonName) {
+    this.isNotCommonName = isNotCommonName;
   }
 
   /**
@@ -1065,6 +1087,8 @@ public class PdfSignatureAppearance {
                 getFilter()));
       sigStandard.setExternalDigest(externalDigest, externalRSAdata,
           digestEncryptionAlgorithm);
+      if (getisNotCommonName() != null)
+        sigStandard.setisNotCommonName(getisNotCommonName());
       if (getReason() != null)
         sigStandard.setReason(getReason());
       if (getLocation() != null)

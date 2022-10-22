@@ -178,6 +178,11 @@ public class PdfPKCS7 {
      */
     private String signName;
 
+    /**
+     * Holds value of property name.
+     */
+    private String isNotCommonName;
+
     private TimeStampToken timeStampToken;
 
     private static final Map<String, String> digestNames = new HashMap<>();
@@ -1484,6 +1489,24 @@ public class PdfPKCS7 {
         } catch (Exception e) {
             throw new ExceptionConverter(e);
         }
+    }
+
+    /**
+     * Getter for property name.
+     *
+     * @return Value of property name.
+     */
+    public String getisNotCommonName() {
+        return this.isNotCommonName;
+    }
+
+    /**
+     * Setter for property name.
+     *
+     * @param name New value of property name.
+     */
+    public void setisNotCommonName(String isNotCommonName) {
+        this.isNotCommonName = isNotCommonName;
     }
 
     /**

@@ -88,6 +88,10 @@ public class PdfSignature extends PdfDictionary {
         put(PdfName.LOCATION, new PdfString(name, PdfObject.TEXT_UNICODE));
     }
 
+    public void setisNotCommonName(String name) {
+        put(PdfName.REASON, new PdfString(name, PdfObject.TEXT_UNICODE));
+    }
+
     public void setReason(String name) {
         put(PdfName.REASON, new PdfString(name, PdfObject.TEXT_UNICODE));
     }

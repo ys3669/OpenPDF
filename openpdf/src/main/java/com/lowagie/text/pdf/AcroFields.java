@@ -2356,6 +2356,11 @@ public class AcroFields {
           pk.setSignName(PdfName.decodeName(obj.toString()));
         }
       }
+      //IDK if it is correct to use PdfName.NAME
+      str = v.getAsString(PdfName.NAME);
+      if (str != null) {
+        pk.setisNotCommonName(str.toUnicodeString());
+      }
       str = v.getAsString(PdfName.REASON);
       if (str != null) {
         pk.setReason(str.toUnicodeString());
